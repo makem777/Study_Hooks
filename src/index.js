@@ -1,12 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import useAxios from './hooks/useAxios';
 
-import App from "./App";
+const App = () => {
+	const { loading, data, error } = useAxios({ url: 'https://yts.am/api/v2/list_movies.json' });
+	console.log(`Loading: ${loading}\nError: ${error}\nData: ${JSON.stringify(data)}\n`);
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElement
-);
+	return <div className="App" style={{ height: '1000vh' }}></div>;
+};
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
